@@ -53,12 +53,13 @@ module.exports = {
     ],
   ],
   projectName: 'redux-toolkit',
-  baseUrl: '/',
+  baseUrl: '/redux-toolkit/',
   favicon: 'img/favicon/favicon.ico',
+  organizationName: 'QubitPi',
   tagline:
     'The official, opinionated, batteries-included toolset for efficient Redux development',
   title: 'Redux Toolkit',
-  url: 'https://redux-toolkit.js.org',
+  url: 'https://QubitPi.github.io/',
   customFields: {
     repoUrl: 'https://github.com/reduxjs/redux-toolkit',
   },
