@@ -60,13 +60,13 @@ const config: Config = {
     ],
   ],
   projectName: 'redux-toolkit',
-  baseUrl: '/redux-toolkit/',
+  baseUrl: '/',
   favicon: 'img/favicon/favicon.ico',
   organizationName: 'QubitPi',
   tagline:
     'The official, opinionated, batteries-included toolset for efficient Redux development',
   title: 'Redux Toolkit',
-  url: 'https://QubitPi.github.io/',
+  url: 'https://redux-toolkit.qubitpi.org/',
   customFields: {
     repoUrl: 'https://github.com/reduxjs/redux-toolkit',
   },
