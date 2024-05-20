@@ -3,16 +3,17 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 ---
-name: Test
+name: CI/CD
 
 'on':
-  workflow_call:
   pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
 
 jobs:
-  test-documentation-build:
-    name: Test Documentation Build
+  documentation:
+    name: Test and Deploy Documentation to GitHub Pages
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -21,8 +22,17 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - name: Install dependencies
         run: yarn install
       - name: Build documentation
         run: yarn build
+      - name: Load CNAME file
+        run: cp CNAME build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: website/build
+          user_name: QubitPi
+          user_email: jack20220723@gmail.com
