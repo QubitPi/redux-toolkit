@@ -32,5 +32,5 @@
       "redux-logger": ["docs/virtual/redux-logger/index.ts"],
       "petstore-api.generated": ["docs/virtual/petstore-api.generated/index.ts"]
     }
-  }
+  },
 }
