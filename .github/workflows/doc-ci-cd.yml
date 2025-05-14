@@ -15,20 +15,23 @@ jobs:
   documentation:
     name: Test and Deploy Documentation to GitHub Pages
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: website
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'yarn'
       - name: Install dependencies
-        run: yarn install
-      - name: Build documentation
-        run: yarn build
-      - name: Load CNAME file
-        run: cp CNAME build
+        run: |
+          yarn
+          cd website
+          yarn
+      - name: Build everything
+        run: |
+          yarn build
+          cd website
+          yarn build
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -36,3 +39,4 @@ jobs:
           publish_dir: website/build
           user_name: QubitPi
           user_email: jack20220723@gmail.com
+          cname: redux-toolkit.qubitpi.org
